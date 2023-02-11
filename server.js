@@ -24,8 +24,26 @@ const PORT = process.env.PORT || 5005;
 
 app.get('/', (request, response) => {
 
-  response.send('test request received');
+  response.status(200).send('Welcome');
+});
 
+app.get('/books', getBooks);
+
+async function getBooks(request, response, next) {
+try {
+  let results = await Books.find();
+  response.status(200).send(results);
+} catch (error) {
+  next(error);
+}
+}
+
+app.get('*', (request, response) => {
+  response.status(404).send('Not available');
+});
+
+app.use((error, request,res, next) => {
+  res.status(500).send(error.message);
 });
 
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
