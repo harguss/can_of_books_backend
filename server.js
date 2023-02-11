@@ -7,12 +7,12 @@ const cors = require('cors');
 const app = express();
 app.use(cors());
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 5005;
 
 app.get('/test', (request, response) => {
 
-  response.send('test request received')
+  response.send('test request received');
 
-})
+});
 
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
