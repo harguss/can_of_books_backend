@@ -32,6 +32,8 @@ app.get('/books', getBooks);
 async function getBooks(request, response, next) {
 try {
   let results = await Books.find();
+  console.log("🚀 ~ file: server.js:35 ~ getBooks ~ results", results)
+  
   response.status(200).send(results);
 } catch (error) {
   next(error);
