@@ -60,7 +60,7 @@ async function deleteBooks(request, response, next){
     await Books.findByIdAndDelete(id);
     response.status(200).send('Book was erased');
   } catch (error) {
-    
+    response.status(500).send('Error deleting book');
   }
 
 
