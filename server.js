@@ -13,7 +13,7 @@ const mongoose = require('mongoose');
 const Books = require('./models/books.js');
 
 mongoose.connect(process.env.DB_URL);
-// comsole.log;
+// comnole.log;
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error'));
@@ -35,7 +35,7 @@ app.delete('/books/:id', deleteBooks);
 async function getBooks(request, response, next) {
 try {
   let results = await Books.find();
-  console.log("🚀 ~ file: server.js:35 ~ getBooks ~ results", results)
+  console.log("🚀 ~ file: server.js:35 ~ getBooks ~ request", request)
   
   response.status(200).send(results);
 } catch (error) {
